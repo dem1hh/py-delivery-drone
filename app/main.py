@@ -1,6 +1,3 @@
-from fileinput import hook_encoded
-
-
 class Cargo:
     def __init__(self, weight: int) -> None:
         self.weight = weight
@@ -15,16 +12,16 @@ class BaseRobot:
         else:
             self.coords = coords
 
-    def go_forward(self, step=1) -> None:
+    def go_forward(self, step: int = 1) -> None:
         self.coords[1] += step
 
-    def go_back(self, step=1) -> None:
+    def go_back(self, step: int = 1) -> None:
         self.coords[1] -= step
 
-    def go_right(self, step=1) -> None:
+    def go_right(self, step: int = 1) -> None:
         self.coords[0] += step
 
-    def go_left(self, step=1) -> None:
+    def go_left(self, step: int = 1) -> None:
         self.coords[0] -= step
 
     def get_info(self) -> str:
@@ -52,7 +49,7 @@ class DeliveryDrone(FlyingRobot):
         weight: int,
         max_load_weight: int,
         coords: list = None,
-        current_load: Cargo = None
+        current_load: Cargo | None = None
     ) -> None:
         super().__init__(name, weight, coords)
         self.max_load_weight = max_load_weight
@@ -67,8 +64,3 @@ class DeliveryDrone(FlyingRobot):
 
     def unhook_load(self) -> None:
         self.current_load = None
-
-
-
-
-
